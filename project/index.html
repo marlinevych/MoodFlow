@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="quiz.css">
 </head>
 <body>
 
@@ -139,9 +140,23 @@
     <div class="text-center reveal">
       <div class="section-tag">Інтерактивне демо</div>
       <h2>Спробуй прямо зараз</h2>
-      <p class="section-desc">Обери свій поточний настрій і побач, як змінюється інтерфейс</p>
+      <p class="section-desc">Обери свій поточний настрій напряму або пройди аналітичний тест для точнішого результату</p>
     </div>
     <div class="demo-wrapper reveal">
+
+      <!-- ① КНОПКА ЗАПУСКУ ТЕСТУ — новий блок над прямим вибором -->
+      <div class="quiz-trigger-wrap">
+        <span class="quiz-trigger-label">🧪 Хочеш точніший аналіз?</span>
+        <button class="btn-quiz-trigger" onclick="openQuiz()">
+          <span class="btn-icon">🎯</span>
+          Пройти тест настрою (8 питань)
+        </button>
+      </div>
+
+      <!-- Розділювач між двома підходами -->
+      <div class="demo-divider">або обери одразу</div>
+
+      <!-- ② ІСНУЮЧИЙ ПРЯМИЙ ВИБІР — без змін -->
       <div class="demo-question">Як ти себе почуваєш? 🤔</div>
       <div class="mood-options">
         <div class="mood-opt" data-mood="happy" onclick="setMood('happy')">
@@ -383,6 +398,62 @@
     </button>
   </div>
 </div>
+
+<!-- ================================================================
+     QUIZ OVERLAY — новий компонент, не впливає на існуючий HTML
+     ================================================================ -->
+<div class="quiz-overlay" id="quizOverlay" role="dialog" aria-modal="true" aria-label="Тест настрою">
+  <div class="quiz-overlay-bg" onclick="closeQuiz()"></div>
+
+  <div class="quiz-modal">
+
+    <!-- Шапка модалки -->
+    <div class="quiz-header">
+      <div class="quiz-header-left">
+        <div class="quiz-title">🎯 Тест настрою</div>
+        <div class="quiz-subtitle">Аналіз за 5 емоційними шкалами</div>
+      </div>
+      <button class="quiz-close" onclick="closeQuiz()" aria-label="Закрити тест">✕</button>
+    </div>
+
+    <!-- Прогрес -->
+    <div class="quiz-progress-wrap">
+      <div class="quiz-progress-info">
+        <span class="quiz-progress-label">Прогрес</span>
+        <span class="quiz-progress-num" id="quizProgressNum">1 / 8</span>
+      </div>
+      <div class="quiz-progress-track">
+        <div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- Область питань / результатів (динамічно заповнюється через JS) -->
+    <div id="quizQuestionArea" class="quiz-question-area"></div>
+
+    <!-- Нижня панель: крапки + кнопка "Далі" -->
+    <div class="quiz-footer" id="quizFooter">
+      <!-- 5 крапок = 5 шкал (декоративний індикатор) -->
+      <div class="quiz-scale-preview">
+        <div class="scale-dot active" title="Радість"></div>
+        <div class="scale-dot" title="Спокій"></div>
+        <div class="scale-dot" title="Енергія"></div>
+        <div class="scale-dot" title="Фокус"></div>
+        <div class="scale-dot" title="Стрес"></div>
+      </div>
+
+      <button class="btn-quiz-next" id="quizNextBtn" onclick="quizNext()">
+        Далі
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</div>
+<!-- / QUIZ OVERLAY -->
+
 <script src="script.js"></script>
+<script src="quiz.js"></script>
 </body>
 </html>
