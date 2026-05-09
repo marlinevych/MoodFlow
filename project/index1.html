@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodFlow — Твій настрій під контролем</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div id="hero-icon-container" class="hero-top-icon">
+                <img src="/icons/star_violet.svg" id="dynamic-hero-icon" alt="Mood Icon">
+            </div>
+            <h1>Дізнайся свій настрій за <span>30 секунд</span></h1>
+            <p>Інтелектуальний аналіз емоцій та адаптивний інтерфейс</p>
+            <button class="btn-primary">Спробувати зараз</button>
+        </div>
+    </section>
+
+    <!-- Як це працює -->
+    <section class="how-it-works container">
+        <h2 class="section-title">Як це працює</h2>
+        <div class="grid-3">
+            <div class="card info">
+                <img src="/icons/light_violet.svg" class="icon-v" alt="Test">
+                <h3>Пройди короткий тест</h3>
+                <p>Всього 5-7 простих питань про твій поточний стан</p>
+            </div>
+            <div class="card info">
+                <img src="/icons/brain_violet.svg" class="icon-v" alt="Analysis">
+                <h3>Отримай аналіз настрою</h3>
+                <p>Миттєвий аналіз твоїх емоцій за допомогою AI</p>
+            </div>
+            <div class="card info">
+                <img src="/icons/right_star_violet.svg" class="icon-v" alt="UI">
+                <h3>Побач адаптивний інтерфейс</h3>
+                <p>Дизайн змінюється під твій настрій автоматично</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Вибір настрою -->
+    <section class="mood-selector">
+        <div class="container glass-panel">
+            <h3>Як ти себе почуваєш?</h3>
+            <div class="mood-grid">
+                <button class="mood-item" onclick="changeMood('happy', this, '/icons/smile.svg')">
+                    <img src="/icons/smile.svg" alt="Happy"> <span>Щасливий</span>
+                </button>
+                <button class="mood-item active" onclick="changeMood('love', this, '/icons/heart-hand.svg')">
+                    <img src="/icons/heart-hand.svg" alt="Love"> <span>Закоханий</span>
+                </button>
+                <button class="mood-item" onclick="changeMood('energy', this, '/icons/fire.svg')">
+                    <img src="/icons/fire.svg" alt="Energy"> <span>Енергійний</span>
+                </button>
+                <button class="mood-item" onclick="changeMood('calm', this, '/icons/wind.svg')">
+                    <img src="/icons/wind.svg" alt="Calm"> <span>Спокійний</span>
+                </button>
+                <button class="mood-item" onclick="changeMood('sad', this, '/icons/upset.svg')">
+                    <img src="/icons/upset.svg" alt="Sad"> <span>Сумний</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Чому MoodFlow -->
+    <section class="why-us container">
+        <h2 class="section-title">Чому MoodFlow</h2>
+        <div class="grid-3">
+            <div class="feat"><img src="/icons/heart.svg"> <h4>Адаптивний дизайн</h4></div>
+            <div class="feat"><img src="/icons/fire.svg"> <h4>Швидкий аналіз</h4></div>
+            <div class="feat"><img src="/icons/star_violet.svg"> <h4>Персоналізація</h4></div>
+            <div class="feat"><img src="/icons/shield.svg"> <h4>Конфіденційність</h4></div>
+            <div class="feat"><img src="/icons/brain_violet.svg"> <h4>AI-технології</h4></div>
+            <div class="feat"><img src="/icons/star_white.svg"> <h4>Безкоштовно</h4></div>
+        </div>
+    </section>
+
+    <!-- Для кого це -->
+    <section class="for-who container">
+        <h2 class="section-title">Для кого це</h2>
+        <div class="grid-3">
+            <div class="card person">
+                <img src="/icons/student_emoji.svg">
+                <h3>Студенти</h3>
+                <p>Контролюй стрес під час сесії та знаходь баланс.</p>
+            </div>
+            <div class="card person">
+                <img src="/icons/palette_emoji.svg">
+                <h3>Креативні спеціалісти</h3>
+                <p>Створюй у потрібному настрої та підвищуй продуктивність.</p>
+            </div>
+            <div class="card person">
+                <img src="/icons/case_emoji.svg">
+                <h3>Онлайн-працівники</h3>
+                <p>Адаптуй середовище під свій стан.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta container">
+        <div class="glass-panel">
+            <h2>Почни вже зараз</h2>
+            <p>Приєднуйся до тисяч користувачів MoodFlow</p>
+            <button class="btn-primary">Спробувати безкоштовно</button>
+        </div>
+    </section>
+
+    <footer class="footer container">
+        <div class="footer-grid">
+            <div><strong>MoodFlow</strong><p>Інтелектуальний аналіз</p></div>
+            <div><h4>Продукт</h4><p>Як це працює</p><p>Переваги</p></div>
+            <div><h4>Компанія</h4><p>Про нас</p><p>Кар'єра</p></div>
+            <div><h4>Соцмережі</h4><p>Instagram</p><p>Twitter</p></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoodFlow — Дізнайся свій настрій за 30 секунд</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Mobile Mood Bar -->
+<div class="demo-mood-bar" id="mobileMoodBar">
+  <button class="demo-mood-mini" data-mood="happy" title="Радісний">😄</button>
+  <button class="demo-mood-mini active" data-mood="neutral" title="Нейтральний">😐</button>
+  <button class="demo-mood-mini" data-mood="calm" title="Спокійний">😌</button>
+  <button class="demo-mood-mini" data-mood="stressed" title="Стресовий">😤</button>
+</div>
+
+<!-- Nav -->
+<nav id="mainNav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="12" fill="var(--accent)" opacity="0.15"/>
+        <path d="M8 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="10" cy="16" r="2" fill="var(--accent)"/>
+        <circle cx="18" cy="16" r="2" fill="var(--accent)"/>
+        <path d="M11 20c1.7 1.3 4.3 1.3 6 0" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      MoodFlow
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how">Як це працює</a></li>
+      <li><a href="#demo">Демо</a></li>
+      <li><a href="#benefits">Переваги</a></li>
+      <li><a href="#testimonials">Відгуки</a></li>
+      <li><a href="#cta" class="nav-cta">Спробувати</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>✨</span>
+          Аналіз настрою на основі ШІ
+        </div>
+        <h1>Дізнайся свій <span class="accent">настрій</span> за 30 секунд</h1>
+        <p class="hero-sub">Інтелектуальний аналіз емоцій та адаптивний інтерфейс, який змінюється разом з тобою</p>
+        <button class="btn-primary" onclick="scrollToDemo()">
+          Спробувати зараз
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="mood-orb" id="heroOrb">
+            <span id="heroEmoji">✨</span>
+          </div>
+          <div class="mood-bars">
+            <div class="mood-bar-row">
+              <span>Радість</span>
+              <div class="mood-bar-track"><div class="mood-bar-fill" id="bar1" style="width:72%"></div></div>
+              <span>72%</span>
+            </div>
+            <div class="mood-bar-row">
+              <span>Спокій</span>
+              <div class="mood-bar-track"><div class="mood-bar-fill" id="bar2" style="width:85%"></div></div>
+              <span>85%</span>
+            </div>
+            <div class="mood-bar-row">
+              <span>Енергія</span>
+              <div class="mood-bar-track"><div class="mood-bar-fill" id="bar3" style="width:60%"></div></div>
+              <span>60%</span>
+            </div>
+            <div class="mood-bar-row">
+              <span>Фокус</span>
+              <div class="mood-bar-track"><div class="mood-bar-fill" id="bar4" style="width:91%"></div></div>
+              <span>91%</span>
+            </div>
+          </div>
+          <div class="mood-score">
+            <strong id="moodScoreNum">8.5</strong>
+            Загальний показник настрою
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section id="how">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">Процес</div>
+      <h2>Як це працює</h2>
+      <p class="section-desc">Три прості кроки до розуміння свого емоційного стану та персоналізованого досвіду</p>
+    </div>
+    <div class="how-grid">
+      <div class="step-card reveal reveal-delay-1">
+        <span class="step-num">01</span>
+        <div class="step-icon">📋</div>
+        <h3>Пройди короткий тест</h3>
+        <p>Відповідай на прості питання про свій поточний стан. Займає лише 30 секунд і не потребує реєстрації</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <span class="step-num">02</span>
+        <div class="step-icon">🧠</div>
+        <h3>Отримай аналіз настрою</h3>
+        <p>ШІ проаналізує твої відповіді та визначить емоційний стан з детальними метриками та інсайтами</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <span class="step-num">03</span>
+        <div class="step-icon">🎨</div>
+        <h3>Побач інтерфейс, що підлаштовується</h3>
+        <p>Дизайн змінюється під твій настрій для максимального комфорту — кольори, форми, навіть анімації</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Demo -->
+<section id="demo">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">Інтерактивне демо</div>
+      <h2>Спробуй прямо зараз</h2>
+      <p class="section-desc">Обери свій поточний настрій і побач, як змінюється інтерфейс</p>
+    </div>
+    <div class="demo-wrapper reveal">
+      <div class="demo-question">Як ти себе почуваєш? 🤔</div>
+      <div class="mood-options">
+        <div class="mood-opt" data-mood="happy" onclick="setMood('happy')">
+          <span class="opt-emoji">😄</span>
+          <div class="opt-name">Радісний</div>
+          <div class="opt-desc">Енергійно та натхненно</div>
+        </div>
+        <div class="mood-opt" data-mood="calm" onclick="setMood('calm')">
+          <span class="opt-emoji">😌</span>
+          <div class="opt-name">Спокійний</div>
+          <div class="opt-desc">Розслаблення та зосередженість</div>
+        </div>
+        <div class="mood-opt" data-mood="stressed" onclick="setMood('stressed')">
+          <span class="opt-emoji">😤</span>
+          <div class="opt-name">Стресовий</div>
+          <div class="opt-desc">Напружений та виснажений</div>
+        </div>
+        <div class="mood-opt active" data-mood="neutral" onclick="setMood('neutral')">
+          <span class="opt-emoji">😐</span>
+          <div class="opt-name">Нейтральний</div>
+          <div class="opt-desc">Збалансований стан</div>
+        </div>
+      </div>
+      <div class="demo-result" id="demoResult">
+        <div class="demo-result-label">
+          <div class="result-dot"></div>
+          <div class="result-badge" id="resultBadge">Активний режим: Нейтральний</div>
+        </div>
+        <p id="resultText">Зверни увагу, як змінились кольори, форми, відступи та загальна атмосфера сторінки. Це допомагає створити максимально комфортне середовище для твого поточного стану.</p>
+        <div class="demo-tags">
+          <span class="demo-tag">Кольорова палітра</span>
+          <span class="demo-tag">Форми елементів</span>
+          <span class="demo-tag">Візуальна щільність</span>
+          <span class="demo-tag">Анімації</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits -->
+<section id="benefits">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">Переваги</div>
+      <h2>Чому обирають MoodFlow</h2>
+      <p class="section-desc">Платформа, яка дійсно розуміє тебе і підлаштовується під твої потреби</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal reveal-delay-1">
+        <div class="benefit-icon">🎨</div>
+        <div>
+          <h3>Адаптивний дизайн</h3>
+          <p>Інтерфейс автоматично підлаштовується під твій емоційний стан, створюючи комфортне середовище для роботи та відпочинку</p>
+        </div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <div class="benefit-icon">⚡</div>
+        <div>
+          <h3>Швидкий аналіз</h3>
+          <p>Отримай результат за 30 секунд без складних тестів та довгих анкет. Простий та інтуїтивний процес</p>
+        </div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <div class="benefit-icon">✨</div>
+        <div>
+          <h3>Персоналізований досвід</h3>
+          <p>Кожен настрій отримує унікальне візуальне середовище — від теплих золотих тонів до освіжаючих зелених відтінків</p>
+        </div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-4">
+        <div class="benefit-icon">🔐</div>
+        <div>
+          <h3>Приватність даних</h3>
+          <p>Твої відповіді не зберігаються та не передаються третім особам. Повна анонімність і безпека</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Audience -->
+<section id="audience">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">Аудиторія</div>
+      <h2>Для кого це</h2>
+      <p class="section-desc">MoodFlow створений для людей, які хочуть краще розуміти себе</p>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card reveal reveal-delay-1">
+        <span class="audience-emoji">🎓</span>
+        <h3>Студенти</h3>
+        <p>Керуй стресом під час сесії та навчання. Адаптуй середовище для кращої концентрації</p>
+      </div>
+      <div class="audience-card reveal reveal-delay-2">
+        <span class="audience-emoji">🎨</span>
+        <h3>Креативні спеціалісти</h3>
+        <p>Знаходь натхнення та підтримуй креативний потік. Середовище підлаштовується під твій творчий ритм</p>
+      </div>
+      <div class="audience-card reveal reveal-delay-3">
+        <span class="audience-emoji">💼</span>
+        <h3>Онлайн-працівники</h3>
+        <p>Створюй комфортне робоче середовище дистанційно. Підвищуй продуктивність та зменшуй втому</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">Відгуки</div>
+      <h2>Що кажуть користувачі</h2>
+      <p class="section-desc">Понад 10,000 людей вже відкрили для себе силу адаптивного інтерфейсу</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <p>"MoodFlow допомагає мені краще розуміти свій емоційний стан. Тепер я бачу закономірності й можу заздалегідь впоратись зі стресом. Адаптивний інтерфейс просто неймовірний!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">👩</div>
+          <div class="author-info">
+            <div class="name">Олена К.</div>
+            <div class="role">UX дизайнерка</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <p>"Під час сесії це рятує! Тепер я можу швидко відстежувати свій рівень стресу та адаптувати робоче середовище. Рекомендую всім студентам!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">👦</div>
+          <div class="author-info">
+            <div class="name">Максим П.</div>
+            <div class="role">Студент</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="stars">★★★★★</div>
+        <p>"Не думала, що дизайн може так впливати на продуктивність. Після MoodFlow я помітила, що працюю на 40% ефективніше у правильному середовищі!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">👩‍💼</div>
+          <div class="author-info">
+            <div class="name">Анна С.</div>
+            <div class="role">Контент-менеджерка</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container reveal">
+    <div class="cta-box">
+      <h2>Почни вже зараз</h2>
+      <p>Дізнайся свій настрій і отримай персоналізований досвід за 30 секунд. Безкоштовно та без реєстрації.</p>
+      <button class="btn-white" onclick="scrollToDemo()">
+        Спробувати безкоштовно
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+      <div class="cta-note">Не потрібна реєстрація • Займає лише 30 секунд • Повністю безкоштовно</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="12" fill="var(--accent)" opacity="0.2"/>
+            <path d="M8 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="var(--accent2)" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="10" cy="16" r="2" fill="var(--accent2)"/>
+            <circle cx="18" cy="16" r="2" fill="var(--accent2)"/>
+            <path d="M11 20c1.7 1.3 4.3 1.3 6 0" stroke="var(--accent2)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          MoodFlow
+        </a>
+        <p>Інтелектуальний аналіз настрою з адаптивним інтерфейсом для комфортного дня</p>
+        <div class="social-links">
+          <a href="#" class="social-link" title="Instagram">📸</a>
+          <a href="#" class="social-link" title="Twitter">🐦</a>
+          <a href="#" class="social-link" title="TikTok">🎵</a>
+          <a href="#" class="social-link" title="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <h4>Навігація</h4>
+        <ul>
+          <li><a href="#how">Про нас</a></li>
+          <li><a href="#how">Як це працює</a></li>
+          <li><a href="#">Приватність</a></li>
+          <li><a href="#">Умови використання</a></li>
+          <li><a href="#">Контакти</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Соціальні мережі</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Telegram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 MoodFlow. Всі права захищені. Створено з ❤️ для технологій та дизайну.</span>
+      <span>Київ, Україна 🇺🇦</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Mood Switcher -->
+<div class="mood-switcher">
+  <div class="switcher-label">Настрій</div>
+  <div class="switcher-btns">
+    <button class="switcher-btn" data-mood="happy" onclick="setMood('happy')">
+      <span class="sb-emoji">😄</span> Радісний
+    </button>
+    <button class="switcher-btn" data-mood="calm" onclick="setMood('calm')">
+      <span class="sb-emoji">😌</span> Спокійний
+    </button>
+    <button class="switcher-btn" data-mood="stressed" onclick="setMood('stressed')">
+      <span class="sb-emoji">😤</span> Стресовий
+    </button>
+    <button class="switcher-btn active" data-mood="neutral" onclick="setMood('neutral')">
+      <span class="sb-emoji">😐</span> Нейтральний
+    </button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
