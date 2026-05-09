@@ -1,5 +1,8 @@
 /**
- * MoodFlow — script.js (FIXED)
+ * MoodFlow — script.js (ВИПРАВЛЕНА ВЕРСІЯ)
+ *
+ * Виправлено: setMood() тепер оновлює і текстові відсотки
+ * у <span> поряд з прогрес-барами в hero-карточці.
  */
 
 /* ============================================================
@@ -11,7 +14,7 @@ const moods = {
     class: '',
     emoji: '✨',
     badge: 'Активний режим: Нейтральний',
-    text: 'Зверни увагу, як змінились кольори...',
+    text: 'Зверни увагу, як змінились кольори, форми, відступи та загальна атмосфера сторінки. Це допомагає створити максимально комфортне середовище для твого поточного стану.',
     bars: [72, 85, 60, 91],
     score: '8.5',
   },
@@ -19,7 +22,7 @@ const moods = {
     class: 'mood-happy',
     emoji: '🌟',
     badge: 'Активний режим: Радісний',
-    text: '🎉 Ти в чудовому настрої!',
+    text: '🎉 Ти в чудовому настрої! Інтерфейс став яскравішим і теплішим — так само як твій стан.',
     bars: [95, 70, 90, 85],
     score: '9.2',
   },
@@ -27,7 +30,7 @@ const moods = {
     class: 'mood-calm',
     emoji: '🌿',
     badge: 'Активний режим: Спокійний',
-    text: "🌿 Ідеальний стан для роботи.",
+    text: '🌿 Ідеальний стан для роботи. Зелені тони та м\'які форми підтримують твою зосередженість.',
     bars: [60, 95, 50, 88],
     score: '8.8',
   },
@@ -35,7 +38,7 @@ const moods = {
     class: 'mood-stressed',
     emoji: '🔥',
     badge: 'Активний режим: Стресовий',
-    text: '😮‍💨 Відчуваєш напругу?',
+    text: '😮‍💨 Відчуваєш напругу? Зроби глибокий вдих. Інтерфейс адаптувався під твій стан.',
     bars: [30, 40, 85, 55],
     score: '5.4',
   },
@@ -44,7 +47,7 @@ const moods = {
 let currentMood = 'neutral';
 
 /* ============================================================
-   2. APPLY MOOD (FIXED)
+   2. APPLY MOOD
    ============================================================ */
 
 function setMood(mood) {
@@ -53,45 +56,51 @@ function setMood(mood) {
 
   const data = moods[mood];
 
-  // 🟢 ВАЖЛИВО: не перезаписуємо всі класи
-  document.body.classList.remove(
-    'mood-happy',
-    'mood-calm',
-    'mood-stressed'
-  );
-
+  // Класи теми на body
+  document.body.classList.remove('mood-happy', 'mood-calm', 'mood-stressed');
   if (data.class) {
     document.body.classList.add(data.class);
   }
 
-  // UI активні кнопки
+  // Активні кнопки
   document.querySelectorAll('[data-mood]').forEach(el => {
     el.classList.toggle('active', el.dataset.mood === mood);
   });
 
-  // Hero
-  const heroEmoji = document.getElementById('heroEmoji');
+  // Hero emoji і score
+  const heroEmoji    = document.getElementById('heroEmoji');
   const moodScoreNum = document.getElementById('moodScoreNum');
-
-  if (heroEmoji) heroEmoji.textContent = data.emoji;
+  if (heroEmoji)    heroEmoji.textContent    = data.emoji;
   if (moodScoreNum) moodScoreNum.textContent = data.score;
 
-  // Bars
+  // Бари: оновлюємо і ширину, і текстовий відсоток
   ['bar1', 'bar2', 'bar3', 'bar4'].forEach((id, i) => {
-    const el = document.getElementById(id);
-    if (el) el.style.width = data.bars[i] + '%';
+    const barEl = document.getElementById(id);
+    if (!barEl) return;
+
+    const val = data.bars[i];
+
+    // Ширина прогрес-бара
+    barEl.style.width = val + '%';
+
+    // Текстовий <span> з відсотком — останній span у рядку .mood-bar-row
+    const row      = barEl.closest('.mood-bar-row');
+    if (row) {
+      const spans    = row.querySelectorAll('span');
+      const lastSpan = spans[spans.length - 1];
+      if (lastSpan) lastSpan.textContent = val + '%';
+    }
   });
 
-  // Demo
+  // Demo-секція
   const resultBadge = document.getElementById('resultBadge');
-  const resultText = document.getElementById('resultText');
-
+  const resultText  = document.getElementById('resultText');
   if (resultBadge) resultBadge.textContent = data.badge;
-  if (resultText) resultText.textContent = data.text;
+  if (resultText)  resultText.textContent  = data.text;
 }
 
 /* ============================================================
-   3. EVENTS (ДОДАНО)
+   3. EVENTS
    ============================================================ */
 
 function initMoodControls() {
@@ -130,12 +139,10 @@ function initProgressBar() {
   if (!bar) return;
 
   window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
-
-    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    bar.style.width = pct + '%';
+    const scrollTop  = window.scrollY;
+    const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+    const pct        = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width  = pct + '%';
   });
 }
 
@@ -160,10 +167,11 @@ function initNavShadow() {
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initMoodControls(); // 🔥 нове
+  initMoodControls();
   initScrollReveal();
   initProgressBar();
   initNavShadow();
 
-  setMood('neutral'); // початковий стан
+  currentMood = ''; // скидаємо щоб перший виклик setMood('neutral') спрацював
+  setMood('neutral');
 });
