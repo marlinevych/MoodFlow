@@ -540,21 +540,122 @@ h1 .accent { color: var(--accent); }
   line-height: 1;
 }
 
+body.mood-happy .step-icon {
+  transform: rotate(-4deg);
+}
+
+body.mood-calm .step-icon {
+  border-radius: 36px;
+}
+
+body.mood-stressed .step-icon {
+  transform: scale(1.08);
+}
+
+body.mood-happy .step-icon {
+  color: #fff2a6;
+}
+
+body.mood-calm .step-icon {
+  color: #d9fff2;
+}
+
+body.mood-stressed .step-icon {
+  color: #ffffff;
+}
 .step-icon {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  border-radius: 16px;
+  width: 74px;
+  height: 74px;
+
+  border-radius: 24px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  transition: var(--transition);
+
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent2)
+  );
+
+  position: relative;
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.6s ease;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.12),
+    inset 0 1px 1px rgba(255,255,255,0.15);
 }
 
-.step-card:hover .step-icon { transform: scale(1.1) rotate(5deg); }
+.step-icon::before {
+  content: "";
+
+  width: 35px;
+  height: 35px;
+
+  background: white;
+
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+}
+
+/* HOVER */
+.step-card:hover .step-icon {
+  transform:
+    translateY(-2px)
+    scale(1.08)
+    rotate(4deg);
+
+  box-shadow:
+    0 20px 45px rgba(0,0,0,0.18),
+    0 0 0 8px rgba(255,255,255,0.08);
+
+  filter: brightness(1.05);
+}
+
+.step-card:hover .step-icon::before {
+  transform: scale(1.08);
+}
+
+.icon-heart::before {
+  mask-image: url("icons/heart-hand.svg");
+  -webkit-mask-image: url("icons/heart-hand.svg");
+}
+
+.icon-brain::before {
+  mask-image: url("icons/brain_white.svg");
+  -webkit-mask-image: url("icons/brain_white.svg");
+}
+
+.icon-star::before {
+  mask-image: url("icons/star_white.svg");
+  -webkit-mask-image: url("icons/star_white.svg");
+}
+body.mood-happy .step-icon::before {
+  background: #fef5d5;
+}
+
+body.mood-calm .step-icon::before {
+  background: #ccf7e5;
+}
+
+body.mood-stressed .step-icon::before {
+  background: #fee0e1;
+}
 
 .step-card h3 {
   font-family: var(--font-display);
@@ -765,13 +866,59 @@ h1 .accent { color: var(--accent); }
   height: 52px;
   min-width: 52px;
   border-radius: 14px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
+
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent2)
+  );
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
   transition: var(--transition);
+
+  position: relative;
+}
+
+
+.light-icon::before {
+  mask-image: url("icons/light_white.svg");
+  -webkit-mask-image: url("icons/light_white.svg");
+}
+
+.brain-icon::before {
+  mask-image: url("icons/brain_white.svg");
+  -webkit-mask-image: url("icons/brain_white.svg");
+}
+
+.star-icon::before {
+  mask-image: url("icons/star_white.svg");
+  -webkit-mask-image: url("icons/star_white.svg");
+}
+
+.shield-icon::before {
+  mask-image: url("icons/shield.svg");
+  -webkit-mask-image: url("icons/shield.svg");
+}
+
+.benefit-icon::before {
+  content: "";
+
+  width: 26px;
+  height: 26px;
+
+  background: white;
+
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
 }
 
 .benefit-card:hover .benefit-icon { transform: scale(1.1) rotate(-5deg); }

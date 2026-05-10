@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MoodFlow — Дізнайся свій настрій за 30 секунд</title>
+<title>MoodFlow – Дізнайся свій настрій за 30 секунд</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -19,7 +19,7 @@
   <button class="demo-mood-mini" data-mood="happy" title="Радісний">😄</button>
   <button class="demo-mood-mini active" data-mood="neutral" title="Нейтральний">😐</button>
   <button class="demo-mood-mini" data-mood="calm" title="Спокійний">😌</button>
-  <button class="demo-mood-mini" data-mood="stressed" title="Стресовий">😤</button>
+  <button class="demo-mood-mini" data-mood="stressed" title="Стресовий">😠</button>
 </div>
 
 <!-- Nav -->
@@ -114,19 +114,19 @@
     <div class="how-grid">
       <div class="step-card reveal reveal-delay-1">
         <span class="step-num">01</span>
-        <div class="step-icon">📋</div>
+        <div class="step-icon icon-heart"></div>
         <h3>Пройди короткий тест</h3>
         <p>Відповідай на прості питання про свій поточний стан. Займає лише 30 секунд і не потребує реєстрації</p>
       </div>
       <div class="step-card reveal reveal-delay-2">
         <span class="step-num">02</span>
-        <div class="step-icon">🧠</div>
+        <div class="step-icon icon-brain"></div>
         <h3>Отримай аналіз настрою</h3>
         <p>ШІ проаналізує твої відповіді та визначить емоційний стан з детальними метриками та інсайтами</p>
       </div>
       <div class="step-card reveal reveal-delay-3">
         <span class="step-num">03</span>
-        <div class="step-icon">🎨</div>
+        <div class="step-icon icon-star"></div>
         <h3>Побач інтерфейс, що підлаштовується</h3>
         <p>Дизайн змінюється під твій настрій для максимального комфорту — кольори, форми, навіть анімації</p>
       </div>
@@ -146,10 +146,9 @@
 
       <!-- ① КНОПКА ЗАПУСКУ ТЕСТУ — новий блок над прямим вибором -->
       <div class="quiz-trigger-wrap">
-        <span class="quiz-trigger-label">🧪 Хочеш точніший аналіз?</span>
+        <span class="quiz-trigger-label">Хочеш точніший аналіз?</span>
         <button class="btn-quiz-trigger" onclick="openQuiz()">
-          <span class="btn-icon">🎯</span>
-          Пройти тест настрою (8 питань)
+              Пройти тест настрою (8 питань)
         </button>
       </div>
 
@@ -207,28 +206,28 @@
     </div>
     <div class="benefits-grid">
       <div class="benefit-card reveal reveal-delay-1">
-        <div class="benefit-icon">🎨</div>
+        <div class="benefit-icon light-icon"></div>
         <div>
           <h3>Адаптивний дизайн</h3>
           <p>Інтерфейс автоматично підлаштовується під твій емоційний стан, створюючи комфортне середовище для роботи та відпочинку</p>
         </div>
       </div>
       <div class="benefit-card reveal reveal-delay-2">
-        <div class="benefit-icon">⚡</div>
+        <div class="benefit-icon brain-icon"></div>
         <div>
           <h3>Швидкий аналіз</h3>
           <p>Отримай результат за 30 секунд без складних тестів та довгих анкет. Простий та інтуїтивний процес</p>
         </div>
       </div>
       <div class="benefit-card reveal reveal-delay-3">
-        <div class="benefit-icon">✨</div>
+        <div class="benefit-icon star-icon"></div>
         <div>
           <h3>Персоналізований досвід</h3>
           <p>Кожен настрій отримує унікальне візуальне середовище — від теплих золотих тонів до освіжаючих зелених відтінків</p>
         </div>
       </div>
       <div class="benefit-card reveal reveal-delay-4">
-        <div class="benefit-icon">🔐</div>
+        <div class="benefit-icon shield-icon"></div>
         <div>
           <h3>Приватність даних</h3>
           <p>Твої відповіді не зберігаються та не передаються третім особам. Повна анонімність і безпека</p>
@@ -345,12 +344,12 @@
           MoodFlow
         </a>
         <p>Інтелектуальний аналіз настрою з адаптивним інтерфейсом для комфортного дня</p>
-        <div class="social-links">
+        <!-- <div class="social-links">
           <a href="#" class="social-link" title="Instagram">📸</a>
           <a href="#" class="social-link" title="Twitter">🐦</a>
           <a href="#" class="social-link" title="TikTok">🎵</a>
           <a href="#" class="social-link" title="LinkedIn">💼</a>
-        </div>
+        </div> -->
       </div>
       <div class="footer-nav">
         <h4>Навігація</h4>
@@ -374,8 +373,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 MoodFlow. Всі права захищені. Створено з ❤️ для технологій та дизайну.</span>
-      <span>Київ, Україна 🇺🇦</span>
+      <span>2026 MoodFlow. Всі права захищені. Створено для курсової роботи М. Ліневич.</span>
+      <span>Київ, Україна</span>
     </div>
   </div>
 </footer>
